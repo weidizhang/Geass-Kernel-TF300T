@@ -1,0 +1,1 @@
+cmd_drivers/pci/pcie/aer/aerdriver.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/pci/pcie/aer/aerdriver.o drivers/pci/pcie/aer/aerdrv_errprint.o drivers/pci/pcie/aer/aerdrv_core.o drivers/pci/pcie/aer/aerdrv.o ; scripts/mod/modpost drivers/pci/pcie/aer/aerdriver.o

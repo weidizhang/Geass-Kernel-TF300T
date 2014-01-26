@@ -1,0 +1,4 @@
+kernel/drivers/power/power_supply.ko
+kernel/drivers/power/pad_battery.ko
+kernel/drivers/power/smb347-charger.ko
+kernel/drivers/power/bq27541_battery.ko

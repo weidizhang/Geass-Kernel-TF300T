@@ -1,0 +1,1 @@
+cmd_drivers/gpu/vga/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/gpu/vga/built-in.o drivers/gpu/vga/vgaarb.o ; scripts/mod/modpost drivers/gpu/vga/built-in.o

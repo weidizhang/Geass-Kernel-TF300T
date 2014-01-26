@@ -1,0 +1,1 @@
+cmd_drivers/video/tegra/host/t20/nvhost-t20.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/video/tegra/host/t20/nvhost-t20.o drivers/video/tegra/host/t20/t20.o ; scripts/mod/modpost drivers/video/tegra/host/t20/nvhost-t20.o

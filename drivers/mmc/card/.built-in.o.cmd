@@ -1,0 +1,1 @@
+cmd_drivers/mmc/card/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/mmc/card/built-in.o drivers/mmc/card/mmc_block.o drivers/mmc/card/mmc_test.o ; scripts/mod/modpost drivers/mmc/card/built-in.o

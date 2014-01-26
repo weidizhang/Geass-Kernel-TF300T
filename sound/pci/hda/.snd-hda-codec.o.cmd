@@ -1,0 +1,1 @@
+cmd_sound/pci/hda/snd-hda-codec.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o sound/pci/hda/snd-hda-codec.o sound/pci/hda/hda_codec.o sound/pci/hda/hda_generic.o sound/pci/hda/hda_proc.o ; scripts/mod/modpost sound/pci/hda/snd-hda-codec.o

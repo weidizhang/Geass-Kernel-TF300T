@@ -1,0 +1,1 @@
+cmd_drivers/clocksource/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/clocksource/built-in.o drivers/clocksource/mmio.o ; scripts/mod/modpost drivers/clocksource/built-in.o

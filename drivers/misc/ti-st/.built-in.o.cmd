@@ -1,0 +1,1 @@
+cmd_drivers/misc/ti-st/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/misc/ti-st/built-in.o drivers/misc/ti-st/st_drv.o ; scripts/mod/modpost drivers/misc/ti-st/built-in.o

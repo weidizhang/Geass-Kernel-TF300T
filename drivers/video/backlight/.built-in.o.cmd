@@ -1,0 +1,1 @@
+cmd_drivers/video/backlight/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/video/backlight/built-in.o drivers/video/backlight/lcd.o drivers/video/backlight/backlight.o drivers/video/backlight/pwm_bl.o drivers/video/backlight/tegra_pwm_bl.o ; scripts/mod/modpost drivers/video/backlight/built-in.o

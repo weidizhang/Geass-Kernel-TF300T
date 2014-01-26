@@ -1,0 +1,1 @@
+cmd_drivers/video/tegra/host/host1x/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/video/tegra/host/host1x/built-in.o drivers/video/tegra/host/host1x/nvhost-host1x.o ; scripts/mod/modpost drivers/video/tegra/host/host1x/built-in.o

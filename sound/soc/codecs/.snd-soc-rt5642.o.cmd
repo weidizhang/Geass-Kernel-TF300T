@@ -1,0 +1,1 @@
+cmd_sound/soc/codecs/snd-soc-rt5642.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o sound/soc/codecs/snd-soc-rt5642.o sound/soc/codecs/rt5640.o sound/soc/codecs/rt5640-dsp.o ; scripts/mod/modpost sound/soc/codecs/snd-soc-rt5642.o

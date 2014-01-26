@@ -1,0 +1,1 @@
+cmd_drivers/input/joystick/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/input/joystick/built-in.o drivers/input/joystick/xpad.o ; scripts/mod/modpost drivers/input/joystick/built-in.o

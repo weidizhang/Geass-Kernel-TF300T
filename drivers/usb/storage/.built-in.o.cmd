@@ -1,0 +1,1 @@
+cmd_drivers/usb/storage/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/usb/storage/built-in.o drivers/usb/storage/usb-storage.o drivers/usb/storage/usb-libusual.o ; scripts/mod/modpost drivers/usb/storage/built-in.o

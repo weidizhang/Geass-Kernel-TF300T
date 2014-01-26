@@ -1,0 +1,1 @@
+cmd_drivers/misc/inv_mpu/accel/inv_mpu_kxtf9.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/misc/inv_mpu/accel/inv_mpu_kxtf9.o drivers/misc/inv_mpu/accel/kxtf9.o ; scripts/mod/modpost drivers/misc/inv_mpu/accel/inv_mpu_kxtf9.o

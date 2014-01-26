@@ -1,0 +1,6 @@
+kernel/drivers/usb/serial/usbserial.ko
+kernel/drivers/usb/serial/baseband_usb_chr.ko
+kernel/drivers/usb/serial/option.ko
+kernel/drivers/usb/serial/pl2303.ko
+kernel/drivers/usb/serial/qcserial.ko
+kernel/drivers/usb/serial/usb_wwan.ko

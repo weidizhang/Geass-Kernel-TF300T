@@ -1,0 +1,1 @@
+cmd_drivers/media/video/tegra/avp/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/media/video/tegra/avp/built-in.o drivers/media/video/tegra/avp/tegra_rpc.o drivers/media/video/tegra/avp/trpc_local.o drivers/media/video/tegra/avp/trpc_sema.o ; scripts/mod/modpost drivers/media/video/tegra/avp/built-in.o

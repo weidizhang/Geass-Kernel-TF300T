@@ -1,0 +1,1 @@
+cmd_drivers/usb/class/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/usb/class/built-in.o drivers/usb/class/cdc-acm.o drivers/usb/class/cdc-wdm.o ; scripts/mod/modpost drivers/usb/class/built-in.o

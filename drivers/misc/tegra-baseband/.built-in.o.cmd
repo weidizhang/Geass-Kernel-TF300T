@@ -1,0 +1,1 @@
+cmd_drivers/misc/tegra-baseband/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/misc/tegra-baseband/built-in.o drivers/misc/tegra-baseband/bb-power.o drivers/misc/tegra-baseband/bb-m7400.o ; scripts/mod/modpost drivers/misc/tegra-baseband/built-in.o

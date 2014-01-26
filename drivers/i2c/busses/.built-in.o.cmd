@@ -1,0 +1,1 @@
+cmd_drivers/i2c/busses/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/i2c/busses/built-in.o drivers/i2c/busses/i2c-tegra.o ; scripts/mod/modpost drivers/i2c/busses/built-in.o

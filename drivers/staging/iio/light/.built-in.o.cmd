@@ -1,0 +1,1 @@
+cmd_drivers/staging/iio/light/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/staging/iio/light/built-in.o drivers/staging/iio/light/isl29028.o drivers/staging/iio/light/ltr558als.o ; scripts/mod/modpost drivers/staging/iio/light/built-in.o

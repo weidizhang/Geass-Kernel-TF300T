@@ -1,0 +1,1 @@
+cmd_crypto/tcrypt.ko := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL -r  -T /root/kernel/android_kernel_asus_tf300t/scripts/module-common.lds --build-id  -o crypto/tcrypt.ko crypto/tcrypt.o crypto/tcrypt.mod.o
