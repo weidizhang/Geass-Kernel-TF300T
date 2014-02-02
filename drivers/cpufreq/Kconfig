@@ -31,6 +31,12 @@ config CPU_FREQ_GOV_ONDEMANDX
 	depends on CPU_FREQ
 	help
 	  'ondemandX' - modified version of ondemand governor
+	  
+config CPU_FREQ_GOV_INTERACTIVEX
+	tristate "'interactiveX' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'interactiveX' - modified version of interactive governor
 
 config CPU_FREQ_STAT
 	tristate "CPU frequency translation statistics"
@@ -127,6 +133,12 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVE
 	  you to get a full dynamic cpu frequency capable system by simply
 	  loading your cpufreq low-level hardware driver, using the
 	  'interactive' governor for latency-sensitive workloads.
+	  
+config CPU_FREQ_DEFAULT_GOV_INTERACTIVEX
+	bool "interactivex"
+	select CPU_FREQ_GOV_INTERACTIVEX
+	help
+	  Use the CPUFreq governor 'interactiveX' as default. 
 	  
 config CPU_FREQ_DEFAULT_GOV_ASSWAX
 	bool "asswax"
