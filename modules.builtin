@@ -44,9 +44,11 @@ kernel/crypto/authenc.ko
 kernel/crypto/authencesn.ko
 kernel/crypto/rng.ko
 kernel/crypto/krng.ko
+kernel/block/deadline-iosched.ko
 kernel/block/row-iosched.ko
 kernel/block/cfq-iosched.ko
 kernel/block/sio-iosched.ko
+kernel/block/vr-iosched.ko
 kernel/drivers/asus_gps/asus_gps.ko
 kernel/drivers/base/firmware_class.ko
 kernel/drivers/base/regmap/regmap-i2c.ko

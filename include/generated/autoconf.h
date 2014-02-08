@@ -100,6 +100,8 @@
 #define CONFIG_BLK_DEV_DM 1
 #define __enabled_CONFIG_BLK_DEV_DM 1
 #define __enabled_CONFIG_BLK_DEV_DM_MODULE 0
+#define __enabled_CONFIG_DEFAULT_VR 0
+#define __enabled_CONFIG_DEFAULT_VR_MODULE 0
 #define __enabled_CONFIG_R3964 0
 #define __enabled_CONFIG_R3964_MODULE 0
 #define __enabled_CONFIG_SND_SOC_TEGRA_MAX98095 0
@@ -1581,7 +1583,8 @@
 #define __enabled_CONFIG_NET_KEY_MODULE 0
 #define __enabled_CONFIG_IP6_NF_TARGET_HL 0
 #define __enabled_CONFIG_IP6_NF_TARGET_HL_MODULE 0
-#define __enabled_CONFIG_IOSCHED_DEADLINE 0
+#define CONFIG_IOSCHED_DEADLINE 1
+#define __enabled_CONFIG_IOSCHED_DEADLINE 1
 #define __enabled_CONFIG_IOSCHED_DEADLINE_MODULE 0
 #define __enabled_CONFIG_MPU_SENSORS_AK8972 0
 #define __enabled_CONFIG_MPU_SENSORS_AK8972_MODULE 0
@@ -4054,6 +4057,9 @@
 #define __enabled_CONFIG_KEYBOARD_MATRIX 0
 #define __enabled_CONFIG_KEYBOARD_MATRIX_MODULE 0
 #define CONFIG_ARCH_NR_GPIO 512
+#define CONFIG_IOSCHED_VR 1
+#define __enabled_CONFIG_IOSCHED_VR 1
+#define __enabled_CONFIG_IOSCHED_VR_MODULE 0
 #define __enabled_CONFIG_MFD_PCF50633 0
 #define __enabled_CONFIG_MFD_PCF50633_MODULE 0
 #define CONFIG_GENERIC_BUG 1
@@ -6430,6 +6436,8 @@
 #define CONFIG_SND_HDA_ENABLE_REALTEK_QUIRKS 1
 #define __enabled_CONFIG_SND_HDA_ENABLE_REALTEK_QUIRKS 1
 #define __enabled_CONFIG_SND_HDA_ENABLE_REALTEK_QUIRKS_MODULE 0
+#define __enabled_CONFIG_DEFAULT_DEADLINE 0
+#define __enabled_CONFIG_DEFAULT_DEADLINE_MODULE 0
 #define __enabled_CONFIG_USB_SERIAL_SYMBOL 0
 #define __enabled_CONFIG_USB_SERIAL_SYMBOL_MODULE 0
 #define __enabled_CONFIG_SERIAL_TIMBERDALE 0

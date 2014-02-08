@@ -627,8 +627,11 @@ deps_arch/arm/mach-tegra/common.o := \
     $(wildcard include/config/cpu/freq/default/gov/powersave.h) \
     $(wildcard include/config/cpu/freq/default/gov/userspace.h) \
     $(wildcard include/config/cpu/freq/default/gov/ondemand.h) \
+    $(wildcard include/config/cpu/freq/default/gov/ondemandx.h) \
     $(wildcard include/config/cpu/freq/default/gov/conservative.h) \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
+    $(wildcard include/config/cpu/freq/default/gov/interactivex.h) \
+    $(wildcard include/config/cpu/freq/default/gov/asswax.h) \
   include/linux/of.h \
     $(wildcard include/config/sparc.h) \
     $(wildcard include/config/of/dynamic.h) \
