@@ -25,6 +25,12 @@ config CPU_FREQ_GOV_ASSWAX
 	depends on CPU_FREQ
 	help
 	  'asswax' - merge of smartass and brazilianwax governors
+	  
+config CPU_FREQ_GOV_PEGASUSQ
+	tristate "'pegasusq' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'pegasusq' - governor by Samsung
 	
 config CPU_FREQ_GOV_ONDEMANDX
 	tristate "'ondemandX' cpufreq governor"
@@ -145,6 +151,12 @@ config CPU_FREQ_DEFAULT_GOV_ASSWAX
 	select CPU_FREQ_GOV_ASSWAX
 	help
 	  Use the CPUFreq governor 'asswax' as default.
+	  
+config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
+	bool "pegasusq"
+	depends on CPU_FREQ_GOV_PEGASUSQ
+	help
+	  Use the CPUFreq governor 'pegasusq' as default.
 	  
 endchoice
 

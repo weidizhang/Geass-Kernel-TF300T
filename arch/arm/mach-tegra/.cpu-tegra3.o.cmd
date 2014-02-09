@@ -474,6 +474,7 @@ deps_arch/arm/mach-tegra/cpu-tegra3.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/interactivex.h) \
     $(wildcard include/config/cpu/freq/default/gov/asswax.h) \
+    $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
   include/linux/device.h \
     $(wildcard include/config/debug/devres.h) \
     $(wildcard include/config/devtmpfs.h) \

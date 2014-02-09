@@ -115,6 +115,7 @@ deps_arch/arm/mach-tegra/tegra3_throttle.o := \
     $(wildcard include/config/cpu/freq/default/gov/interactive.h) \
     $(wildcard include/config/cpu/freq/default/gov/interactivex.h) \
     $(wildcard include/config/cpu/freq/default/gov/asswax.h) \
+    $(wildcard include/config/cpu/freq/default/gov/pegasusq.h) \
   include/linux/mutex.h \
     $(wildcard include/config/debug/mutexes.h) \
     $(wildcard include/config/debug/lock/alloc.h) \
