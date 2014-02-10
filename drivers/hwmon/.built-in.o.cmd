@@ -1,1 +1,0 @@
-cmd_drivers/hwmon/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/hwmon/built-in.o drivers/hwmon/hwmon.o drivers/hwmon/ina219.o drivers/hwmon/tegra-tsensor.o drivers/hwmon/al3010.o ; scripts/mod/modpost drivers/hwmon/built-in.o

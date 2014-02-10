@@ -1,1 +1,0 @@
-cmd_kernel/trace/libftrace.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o kernel/trace/libftrace.o kernel/trace/ftrace.o ; scripts/mod/modpost kernel/trace/libftrace.o

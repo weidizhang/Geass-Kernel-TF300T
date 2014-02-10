@@ -1,1 +1,0 @@
-cmd_security/tf_driver/tf_driver.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o security/tf_driver/tf_driver.o security/tf_driver/tf_util.o security/tf_driver/tf_conn.o security/tf_driver/tf_device.o security/tf_driver/tf_comm.o security/tf_driver/tf_comm_tz.o ; scripts/mod/modpost security/tf_driver/tf_driver.o

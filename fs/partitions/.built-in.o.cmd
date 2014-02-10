@@ -1,1 +1,0 @@
-cmd_fs/partitions/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o fs/partitions/built-in.o fs/partitions/check.o fs/partitions/msdos.o fs/partitions/efi.o ; scripts/mod/modpost fs/partitions/built-in.o

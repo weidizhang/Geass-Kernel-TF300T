@@ -1,1 +1,0 @@
-cmd_sound/usb/snd-usbmidi-lib.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o sound/usb/snd-usbmidi-lib.o sound/usb/midi.o ; scripts/mod/modpost sound/usb/snd-usbmidi-lib.o

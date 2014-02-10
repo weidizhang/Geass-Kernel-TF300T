@@ -1,1 +1,0 @@
-cmd_drivers/gpio/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/gpio/built-in.o drivers/gpio/gpiolib.o drivers/gpio/gpio-pca953x.o drivers/gpio/gpio-rc5t583.o drivers/gpio/gpio-tegra.o ; scripts/mod/modpost drivers/gpio/built-in.o

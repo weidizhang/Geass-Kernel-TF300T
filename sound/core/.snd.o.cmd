@@ -1,1 +1,0 @@
-cmd_sound/core/snd.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o sound/core/snd.o sound/core/sound.o sound/core/init.o sound/core/memory.o sound/core/info.o sound/core/control.o sound/core/misc.o sound/core/device.o sound/core/vmaster.o sound/core/jack.o ; scripts/mod/modpost sound/core/snd.o

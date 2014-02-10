@@ -1,1 +1,0 @@
-cmd_drivers/net/wireless/bcm43xx/bcmdhd_34.ko := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL -r  -T /root/kernel/android_kernel_asus_tf300t/scripts/module-common.lds --build-id  -o drivers/net/wireless/bcm43xx/bcmdhd_34.ko drivers/net/wireless/bcm43xx/bcmdhd_34.o drivers/net/wireless/bcm43xx/bcmdhd_34.mod.o

@@ -1,1 +1,0 @@
-cmd_drivers/switch/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/switch/built-in.o drivers/switch/switch_class.o ; scripts/mod/modpost drivers/switch/built-in.o

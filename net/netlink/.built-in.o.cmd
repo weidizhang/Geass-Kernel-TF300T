@@ -1,1 +1,0 @@
-cmd_net/netlink/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o net/netlink/built-in.o net/netlink/af_netlink.o net/netlink/genetlink.o ; scripts/mod/modpost net/netlink/built-in.o

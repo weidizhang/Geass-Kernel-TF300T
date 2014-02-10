@@ -1,1 +1,0 @@
-cmd_drivers/media/common/tuners/tda18271.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/media/common/tuners/tda18271.o drivers/media/common/tuners/tda18271-maps.o drivers/media/common/tuners/tda18271-common.o drivers/media/common/tuners/tda18271-fe.o ; scripts/mod/modpost drivers/media/common/tuners/tda18271.o

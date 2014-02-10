@@ -1,1 +1,0 @@
-cmd_drivers/ril/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/ril/built-in.o drivers/ril/ril.o drivers/ril/ril_proximity.o drivers/ril/ril_wakeup.o drivers/ril/ril_sim.o drivers/ril/ril_modem_crash.o ; scripts/mod/modpost drivers/ril/built-in.o

@@ -1,1 +1,0 @@
-cmd_drivers/video/tegra/host/mpe/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/video/tegra/host/mpe/built-in.o drivers/video/tegra/host/mpe/nvhost-mpe.o ; scripts/mod/modpost drivers/video/tegra/host/mpe/built-in.o

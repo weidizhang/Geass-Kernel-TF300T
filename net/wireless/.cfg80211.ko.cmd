@@ -1,1 +1,0 @@
-cmd_net/wireless/cfg80211.ko := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL -r  -T /root/kernel/android_kernel_asus_tf300t/scripts/module-common.lds --build-id  -o net/wireless/cfg80211.ko net/wireless/cfg80211.o net/wireless/cfg80211.mod.o

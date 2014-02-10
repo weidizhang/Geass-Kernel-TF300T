@@ -1,5 +1,0 @@
-kernel/drivers/ril/ril.ko
-kernel/drivers/ril/ril_proximity.ko
-kernel/drivers/ril/ril_wakeup.ko
-kernel/drivers/ril/ril_sim.ko
-kernel/drivers/ril/ril_modem_crash.ko

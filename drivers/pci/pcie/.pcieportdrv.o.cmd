@@ -1,1 +1,0 @@
-cmd_drivers/pci/pcie/pcieportdrv.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/pci/pcie/pcieportdrv.o drivers/pci/pcie/portdrv_core.o drivers/pci/pcie/portdrv_pci.o drivers/pci/pcie/portdrv_bus.o ; scripts/mod/modpost drivers/pci/pcie/pcieportdrv.o

@@ -1,1 +1,0 @@
-cmd_drivers/misc/eeprom/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/misc/eeprom/built-in.o drivers/misc/eeprom/at24.o ; scripts/mod/modpost drivers/misc/eeprom/built-in.o

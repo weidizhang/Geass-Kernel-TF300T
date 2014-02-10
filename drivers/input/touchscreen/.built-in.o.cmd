@@ -1,1 +1,0 @@
-cmd_drivers/input/touchscreen/built-in.o :=  /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/input/touchscreen/built-in.o drivers/input/touchscreen/atmel_maxtouch.o drivers/input/touchscreen/mxt_config.o drivers/input/touchscreen/ektf3k.o drivers/input/touchscreen/sis_i2c.o ; scripts/mod/modpost drivers/input/touchscreen/built-in.o

@@ -1,1 +1,0 @@
-cmd_sound/soc/tegra/snd-soc-tegra-wm8903.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o sound/soc/tegra/snd-soc-tegra-wm8903.o sound/soc/tegra/tegra_wm8903.o ; scripts/mod/modpost sound/soc/tegra/snd-soc-tegra-wm8903.o

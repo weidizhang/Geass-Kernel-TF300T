@@ -1,1 +1,0 @@
-cmd_drivers/usb/gadget/g_android.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o drivers/usb/gadget/g_android.o drivers/usb/gadget/android.o ; scripts/mod/modpost drivers/usb/gadget/g_android.o

@@ -1,1 +1,0 @@
-cmd_sound/pci/hda/snd-hda-codec-realtek.o := /root/kernel/toolchains/arm-eabi-linaro-4.6.2/bin/arm-eabi-ld -EL    -r -o sound/pci/hda/snd-hda-codec-realtek.o sound/pci/hda/patch_realtek.o ; scripts/mod/modpost sound/pci/hda/snd-hda-codec-realtek.o
