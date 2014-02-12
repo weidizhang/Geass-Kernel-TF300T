@@ -29,6 +29,20 @@ config IOSCHED_SIO
 	  basic merging, trying to keep a minimum overhead. It is aimed
 	  mainly for aleatory access devices (eg: flash devices).
 	  
+config IOSCHED_SIOPLUS
+	tristate "Simple I/O scheduler plus"
+	default y
+	---help---
+	  Based on SIO, fixes write starvation bug, adds functionality to
+	  pick an async read every X number of sync reads.
+	  
+config IOSCHED_ZEN
+	tristate "Zen I/O scheduler"
+	default y
+	---help---
+	  FCFS, dispatches are back-inserted, deadlines ensure fairness.
+	  Should work best with devices where there is no travel delay.
+	  
 config IOSCHED_DEADLINE
 	tristate "Deadline I/O scheduler"
 	default y
@@ -85,6 +99,12 @@ choice
 		
 	config DEFAULT_SIO
 		bool "SIO" if IOSCHED_SIO=y
+		
+	config DEFAULT_SIOPLUS
+		bool "SIOPLUS" if IOSCHED_SIOPLUS=y
+		
+	config DEFAULT_ZEN
+		bool "ZEN" if IOSCHED_ZEN=y
 
 	config DEFAULT_ROW
 		bool "ROW" if IOSCHED_ROW=y
@@ -112,6 +132,8 @@ config DEFAULT_IOSCHED
 	default "cfq" if DEFAULT_CFQ
 	default "noop" if DEFAULT_NOOP
 	default "sio" if DEFAULT_SIO
+	default "sioplus" if DEFAULT_SIOPLUS
+	default "zen" if DEFAULT_ZEN
 
 endmenu
 
