@@ -48,18 +48,10 @@
 
 #include <linux/seq_file.h>
 
-#define SYSTEM_NORMAL_MODE	(0)
-#define SYSTEM_BALANCE_MODE	(1)
-#define SYSTEM_PWRSAVE_MODE	(2)
-#define SYSTEM_MODE_END 		(SYSTEM_PWRSAVE_MODE + 1)
-#define SYSTEM_PWRSAVE_MODE_MAX_FREQ	(1000000)
-unsigned int power_mode_table[SYSTEM_MODE_END] = {1000000,1200000,2000000};
-
 #define CAMERA_ENABLE_EMC_MINMIAM_RATE (667000000)
 /* tegra throttling and edp governors require frequencies in the table
    to be in ascending order */
 static struct cpufreq_frequency_table *freq_table;
-static unsigned int freq_table_size=0;;
 static struct clk *cpu_clk;
 static struct clk *emc_clk;
 static struct clk *cpu_lp_clk;
@@ -69,8 +61,9 @@ static unsigned long target_cpu_speed[CONFIG_NR_CPUS];
 static DEFINE_MUTEX(tegra_cpu_lock);
 static bool is_suspended;
 static int suspend_index;
-static bool force_policy_max;
- int  gps_enable=0;
+static bool force_policy_max = 1;
+static bool edp_enable = 1;
+int gps_enable = 0;
 
 static bool camera_enable = 0;
 static unsigned long camera_enable_cpu_emc_mini_rate = 0;
@@ -245,95 +238,6 @@ static struct kernel_param_ops policy_ops = {
 	.get = force_policy_max_get,
 };
 module_param_cb(force_policy_max, &policy_ops, &force_policy_max, 0644);
-
-static  int system_mode=0;
-
-static int system_mode_set(const char *arg, const struct kernel_param *kp)
-{
-	int ret;
-
-	ret = param_set_int(arg, kp);
-	if (ret == 0) {
-		printk("system_mode_set system_mode=%u\n",system_mode);
-
-		if((system_mode < SYSTEM_NORMAL_MODE) || (system_mode > SYSTEM_PWRSAVE_MODE))
-			system_mode = SYSTEM_NORMAL_MODE;
-
-		tegra_cpu_set_speed_cap(NULL);
-	}
-
-	return ret;
-}
-
-static int system_mode_get(char *buffer, const struct kernel_param *kp)
-{
-	return param_get_int(buffer, kp);
-}
-
-static struct kernel_param_ops system_mode_ops = {
-	.set = system_mode_set,
-	.get = system_mode_get,
-};
-module_param_cb(system_mode, &system_mode_ops, &system_mode, 0644);
-
-
-static unsigned int pwr_save=0;
-static unsigned int pwr_save_freq=1000000;
-static int pwr_save_freq_set(const char *arg, const struct kernel_param *kp)
-{
-	int ret = 0;
-
-	ret = param_set_int(arg, kp);
-	if (ret == 0) {
-		printk("pwr_save_freq_set pwr_save=%u\n",pwr_save_freq);
-	}
-	return ret;
-}
-static int pwr_save_freq_get(char *buffer, const struct kernel_param *kp)
-{
-	return param_get_int(buffer, kp);
-}
-
-static struct kernel_param_ops tegra_pwr_save_freq_ops = {
-	.set = pwr_save_freq_set,
-	.get = pwr_save_freq_get,
-};
-module_param_cb( pwr_save_freq,&tegra_pwr_save_freq_ops, &pwr_save_freq, 0644);
-static int pwr_save_state_set(const char *arg, const struct kernel_param *kp)
-{
-	int ret = 0;
-
-	ret = param_set_int(arg, kp);
-
-	if (ret == 0) {
-		printk("pwr_save_state_set pwr_save=%u\n",pwr_save);
-	}
-	return ret;
-}
-static int pwr_save_state_get(char *buffer, const struct kernel_param *kp)
-{
-	return param_get_int(buffer, kp);
-}
-
-static struct kernel_param_ops tegra_pwr_save_ops = {
-	.set = pwr_save_state_set,
-	.get = pwr_save_state_get,
-};
-module_param_cb(enable_pwr_save, &tegra_pwr_save_ops, &pwr_save, 0644);
-
- unsigned int ASUS_governor_speed(unsigned int requested_speed)
-{
-	unsigned int new_speed=requested_speed;
-
-	if((system_mode == SYSTEM_BALANCE_MODE) && (requested_speed > power_mode_table[SYSTEM_BALANCE_MODE]))
-		new_speed = power_mode_table[SYSTEM_BALANCE_MODE];
-	else  if((system_mode == SYSTEM_PWRSAVE_MODE) && (requested_speed > power_mode_table[SYSTEM_PWRSAVE_MODE]))
-		new_speed = power_mode_table[SYSTEM_PWRSAVE_MODE];
-	else  if((system_mode == SYSTEM_NORMAL_MODE) && (requested_speed > power_mode_table[SYSTEM_NORMAL_MODE]))
-		new_speed = power_mode_table[SYSTEM_NORMAL_MODE];
-
-	return new_speed;
-}
 
 static unsigned int cpu_user_cap;
 
@@ -677,29 +581,6 @@ module_param_cb(pwr_cap_limit_3, &pwr_cap_ops, &pwr_cap_limits[2], 0644);
 module_param_cb(pwr_cap_limit_4, &pwr_cap_ops, &pwr_cap_limits[3], 0644);
 
 #ifdef CONFIG_DEBUG_FS
-static int pwr_mode_table_debugfs_show(struct seq_file *s, void *data)
-{
-	seq_printf(s, "-- CPU power mode table --\n");
-	seq_printf(s, "Power Saving=%u \n Balanced=%u \n Normal=%u \n \n",
-			   power_mode_table[2],
-			   power_mode_table[1],
-			   power_mode_table[0]);
-	return 0;
-}
-
-
-static int pwr_mode_table_debugfs_open(struct inode *inode, struct file *file)
-{
-	return single_open(file, pwr_mode_table_debugfs_show, inode->i_private);
-}
-
-static const struct file_operations pwr_mode_table_debugfs_fops = {
-	.open		= pwr_mode_table_debugfs_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
-};
-
 static int system_edp_alarm_get(void *data, u64 *val)
 {
 	*val = (u64)system_edp_alarm;
@@ -745,9 +626,6 @@ static int __init tegra_cpu_debug_init(void)
 		return -ENOMEM;
 
 	if (tegra_edp_debug_init(cpu_tegra_debugfs_root))
-		goto err_out;
-        if (!debugfs_create_file("pwr_mode_table", 0644, cpu_tegra_debugfs_root,
-		 NULL, &pwr_mode_table_debugfs_fops))
 		goto err_out;
 
 	return 0;
@@ -881,8 +759,8 @@ unsigned long tegra_cpu_highest_speed(void) {
 	int i;
 
 	for_each_online_cpu(i) {
-		//if (force_policy_max)
-		//	policy_max = min(policy_max, policy_max_speed[i]);
+		if (force_policy_max)
+			policy_max = min(policy_max, policy_max_speed[i]);
 		rate = max(rate, target_cpu_speed[i]);
 	}
 	rate = min(rate, policy_max);
@@ -897,7 +775,6 @@ int tegra_cpu_set_speed_cap(unsigned int *speed_cap)
 	if (is_suspended)
 		return -EBUSY;
 
-       new_speed = ASUS_governor_speed(new_speed);
 	new_speed = tegra_throttle_governor_speed(new_speed);
 	new_speed = edp_governor_speed(new_speed);
 	//new_speed = user_cap_speed(new_speed);
@@ -936,7 +813,6 @@ int tegra_cpu_late_resume_set_speed_cap(int speed)
 		return -EBUSY;
 	}
 
-	new_speed = ASUS_governor_speed(new_speed);
 	new_speed = tegra_throttle_governor_speed(new_speed);
 	new_speed = edp_governor_speed(new_speed);
 
@@ -966,19 +842,9 @@ static int tegra_target(struct cpufreq_policy *policy,
 	if (ret)
 		goto _out;
 
-	if( (ret >= 0) && (idx >= 0) && (idx < freq_table_size) )
 	freq = freq_table[idx].frequency;
-	else{
-		printk("[warning] tegra_target ret=%d idx=%d cpu=%u\n", ret, idx, policy->cpu);
-		goto _out;
-	}
-
-	cpu=policy->cpu;
-	if( cpu >= 0 && cpu < nr_cpu_ids){
-		target_cpu_speed[cpu] = freq;
+	target_cpu_speed[policy->cpu] = freq;
 	ret = tegra_cpu_set_speed_cap(&new_speed);
-	}else
-		printk("[warning] tegra_target cpu=%u\n",policy->cpu);
 
 
 _out:
@@ -1059,13 +925,6 @@ static struct notifier_block tegra_cpu_pm_notifier = {
 	.notifier_call = tegra_pm_notify,
 };
 
-void rebuild_max_freq_table(unsigned int max_rate)
-{
-	power_mode_table[SYSTEM_NORMAL_MODE] = max_rate;
-	power_mode_table[SYSTEM_BALANCE_MODE] = 1200000;
-	power_mode_table[SYSTEM_PWRSAVE_MODE] = SYSTEM_PWRSAVE_MODE_MAX_FREQ;
-}
-
 static int tegra_cpu_init(struct cpufreq_policy *policy)
 {
 	if (policy->cpu >= CONFIG_NR_CPUS)
@@ -1096,6 +955,7 @@ static int tegra_cpu_init(struct cpufreq_policy *policy)
 	cpumask_copy(policy->related_cpus, cpu_possible_mask);
 
 	if (policy->cpu == 0) {
+		policy->max = 1300000; //1.3 GHz
 		register_pm_notifier(&tegra_cpu_pm_notifier);
 	}
 
@@ -1169,13 +1029,6 @@ static int __init tegra_cpufreq_init(void)
 		return ret;
 
 	freq_table = table_data->freq_table;
-
-	for (i= 0; freq_table[i].frequency !=
-				CPUFREQ_TABLE_END; i++)
-				freq_table_size++;
-
-	rebuild_max_freq_table( freq_table[freq_table_size-1].frequency);
-	printk("tegra_cpufreq_init freq_table_size=%u max rate=%u\n", freq_table_size, freq_table[freq_table_size-1].frequency);
 
 	tegra_cpu_edp_init(false);
 
