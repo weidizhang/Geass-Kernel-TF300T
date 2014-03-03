@@ -955,7 +955,6 @@ static int tegra_cpu_init(struct cpufreq_policy *policy)
 	cpumask_copy(policy->related_cpus, cpu_possible_mask);
 
 	if (policy->cpu == 0) {
-		policy->max = 1300000; //1.3 GHz
 		register_pm_notifier(&tegra_cpu_pm_notifier);
 	}
 
