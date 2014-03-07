@@ -547,39 +547,6 @@ static void tegra_cpu_edp_exit(void)
 	unregister_hotcpu_notifier(&tegra_cpu_edp_notifier);
 }
 
-static int pwr_cap_limit_set(const char *arg, const struct kernel_param *kp)
-{
-	unsigned int old_freq = *(unsigned int *)(kp->arg);
-	unsigned int new_freq;
-	int ret;
-
-	mutex_lock(&tegra_cpu_lock);
-	ret = param_set_uint(arg, kp);
-
-	if (ret == 0) {
-		new_freq = *(unsigned int *)(kp->arg);
-		if (new_freq != old_freq) {
-			edp_update_limit();
-			tegra_cpu_set_speed_cap(NULL);
-		}
-}
-
-	mutex_unlock(&tegra_cpu_lock);
-	return ret;
-}
-static int pwr_cap_limit_get(char *buffer, const struct kernel_param *kp)
-{
-	return param_get_uint(buffer, kp);
-}
-static struct kernel_param_ops pwr_cap_ops = {
-	.set = pwr_cap_limit_set,
-	.get = pwr_cap_limit_get,
-};
-module_param_cb(pwr_cap_limit_1, &pwr_cap_ops, &pwr_cap_limits[0], 0644);
-module_param_cb(pwr_cap_limit_2, &pwr_cap_ops, &pwr_cap_limits[1], 0644);
-module_param_cb(pwr_cap_limit_3, &pwr_cap_ops, &pwr_cap_limits[2], 0644);
-module_param_cb(pwr_cap_limit_4, &pwr_cap_ops, &pwr_cap_limits[3], 0644);
-
 #ifdef CONFIG_DEBUG_FS
 static int system_edp_alarm_get(void *data, u64 *val)
 {

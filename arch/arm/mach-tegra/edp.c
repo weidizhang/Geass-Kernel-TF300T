@@ -423,10 +423,10 @@ void __init tegra_init_system_edp_limits(unsigned int power_limit_mW)
 	e = kmalloc(sizeof(unsigned int) * 4, GFP_KERNEL);
 	BUG_ON(!e);
 
-	e[0] = (unsigned int)t[i].freq_limits[0] * 10000;
-	e[1] = (unsigned int)t[i].freq_limits[1] * 10000;
-	e[2] = (unsigned int)t[i].freq_limits[2] * 10000;
-	e[3] = (unsigned int)t[i].freq_limits[3] * 10000;
+	e[0] = (unsigned int)t[i].freq_limits[0] + 10 * 10000;
+	e[1] = (unsigned int)t[i].freq_limits[1] + 20 * 10000;
+	e[2] = (unsigned int)t[i].freq_limits[2] + 20 * 10000;
+	e[3] = (unsigned int)t[i].freq_limits[3] + 20 * 10000;
 
 out:
 	kfree(system_edp_limits);
